@@ -14,13 +14,13 @@ Here's a list of software techniques and principles adopted in this backend impl
 
 Further info on this guideline [here](https://github.com/danilo-ambrosio/bookstore/blob/master/worklog.md).
 
-# Framework and tools
+## Framework and tools
 - [Spring Boot](https://spring.io/projects/spring-boot/) (data, core, web)
 - [Mongo DB](https://www.mongodb.com/)
 - [Maven](https://maven.apache.org) 
 
-# Infrastructure Requirements
+## Infrastructure Requirements
 
 The only requirement for this application is a [Mongo DB](https://www.mongodb.com/) instance. Therefore, it's necessary to create an environment variable named *BOOKSTORE_DATABASE_URI* through which the application can connect to the Mongo DB.
 
-# Out of Scope
+## Out of Scope
