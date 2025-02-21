@@ -11,7 +11,7 @@ public class BookTest {
     public void testThatBookIsInventoriedAndInStock() {
         final ISBN code = ISBN.code("978-0-316-1347-2");
 
-        final Title title = Title.of("Urban Adventures");
+        final Title title = Title.of("Adventures");
 
         final List<Author> authors =
                 Author.names("Emily Steel", "Diana Stewart");
@@ -49,25 +49,25 @@ public class BookTest {
         final List<Author> authors = Author.names("Martin Fowler");
         final List<Genre> genres = Genre.of("Math");
 
-        final Book inventoriedBook =
+        final Book book =
                 Book.inventory(code, title, StockQuantity.of(0), authors, genres);
 
-        Assertions.assertEquals(code, inventoriedBook.code());
-        Assertions.assertEquals(title, inventoriedBook.title());
-        Assertions.assertEquals(authors, inventoriedBook.authors());
-        Assertions.assertEquals(genres, inventoriedBook.genres());
-        Assertions.assertFalse(inventoriedBook.isInStock());
+        Assertions.assertEquals(code, book.code());
+        Assertions.assertEquals(title, book.title());
+        Assertions.assertEquals(authors, book.authors());
+        Assertions.assertEquals(genres, book.genres());
+        Assertions.assertFalse(book.isInStock());
 
         final Title fixedTitle = Title.of("Microservice Patterns");
         final ISBN fixedCode = ISBN.code("777-1-222-3331-4");
         final List<Author> fixedAuthors = Author.names("Martin Fowler");
         final List<Genre> fixedGenres = Genre.of("Software Engineering");
 
-        inventoriedBook.reinventory(fixedCode, fixedTitle, StockQuantity.of(250), fixedAuthors, fixedGenres);
+        book.reinventory(fixedCode, fixedTitle, StockQuantity.of(250), fixedAuthors, fixedGenres);
 
-        Assertions.assertEquals(fixedCode, inventoriedBook.code());
-        Assertions.assertEquals(fixedAuthors, inventoriedBook.authors());
-        Assertions.assertEquals(fixedGenres, inventoriedBook.genres());
-        Assertions.assertTrue(inventoriedBook.isInStock());
+        Assertions.assertEquals(fixedCode, book.code());
+        Assertions.assertEquals(fixedAuthors, book.authors());
+        Assertions.assertEquals(fixedGenres, book.genres());
+        Assertions.assertTrue(book.isInStock());
     }
 }
