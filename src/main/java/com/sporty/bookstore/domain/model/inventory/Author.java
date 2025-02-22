@@ -9,6 +9,10 @@ public record Author(String name) {
     }
 
     public static List<Author> names(String ...names) {
-        return List.of(names).stream().map(Author::name).toList();
+        return names(List.of(names));
+    }
+
+    public static List<Author> names(List<String> names) {
+        return names.stream().map(Author::name).toList();
     }
 }

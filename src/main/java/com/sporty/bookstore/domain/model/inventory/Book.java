@@ -1,7 +1,6 @@
 package com.sporty.bookstore.domain.model.inventory;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Book {
@@ -13,12 +12,13 @@ public class Book {
     private final List<Author> authors = new ArrayList<>();
     private final List<Genre> genres = new ArrayList<>();
 
-    private Book(final ISBN isbn,
+    private Book(final BookId bookId,
+                 final ISBN isbn,
                  final Title title,
                  final StockQuantity stockQuantity,
                  final List<Author> authors,
                  final List<Genre> genres) {
-        this.bookId = BookId.create();
+        this.bookId = bookId;
         this.isbn = isbn;
         this.title = title;
         this.stockQuantity = stockQuantity;
@@ -26,12 +26,21 @@ public class Book {
         this.genres.addAll(genres);
     }
 
+    public static Book of(final BookId bookId,
+                          final ISBN isbn,
+                          final Title title,
+                          final StockQuantity stockQuantity,
+                          final List<Author> authors,
+                          final List<Genre> genres) {
+        return new Book(bookId, isbn, title, stockQuantity, authors, genres);
+    }
+
     public static Book inventory(final ISBN code,
                                  final Title title,
                                  final StockQuantity stockQuantity,
                                  final List<Author> authors,
                                  final List<Genre> genres) {
-        return new Book(code, title, stockQuantity, authors, genres);
+        return Book.of(BookId.create(), code, title, stockQuantity, authors, genres);
     }
 
     public void reinventory(final ISBN code,
@@ -55,20 +64,28 @@ public class Book {
         this.stockQuantity = StockQuantity.of(this.stockQuantity.quantity() - stockQuantity.quantity());
     }
 
-    public ISBN code() {
-        return isbn;
+    public String id() {
+        return bookId.value();
     }
 
-    public Title title() {
-        return title;
+    public String isbn() {
+        return isbn.from();
     }
 
-    public List<Author> authors() {
-        return Collections.unmodifiableList(authors);
+    public String title() {
+        return title.title();
     }
 
-    public List<Genre> genres() {
-        return Collections.unmodifiableList(genres);
+    public int stockQuantity() {
+        return stockQuantity.quantity();
+    }
+
+    public List<String> authors() {
+        return authors.stream().map(Author::name).toList();
+    }
+
+    public List<String> genres() {
+        return genres.stream().map(Genre::name).toList();
     }
 
     public boolean isInStock() {
