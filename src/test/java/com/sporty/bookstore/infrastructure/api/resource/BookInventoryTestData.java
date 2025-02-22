@@ -28,10 +28,4 @@ public class BookInventoryTestData {
         );
     }
 
-    public static List<BookInventoryData> books() {
-        return List.of(
-                effectiveJavaBook(),
-                designPatternsBook()
-        );
-    }
 }

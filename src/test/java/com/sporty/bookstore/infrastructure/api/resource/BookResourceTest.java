@@ -4,7 +4,6 @@ import com.google.gson.reflect.TypeToken;
 import com.sporty.bookstore.infrastructure.api.resource.data.BookInventoryData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.ResultActions;
 
 import java.util.List;
@@ -13,8 +12,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@DirtiesContext
-public class BookInventoryResourceTest extends ResourceTest {
+public class BookResourceTest extends ResourceTest {
 
     @Test
     public void testThatBookIsInventoried() throws Exception {
