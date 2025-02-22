@@ -46,9 +46,10 @@ public class BookResource {
         return ResponseEntity.status(HttpStatus.CREATED).body(BookInventoryData.from(inventoriedBook));
     }
 
-    @PutMapping(path = "/{bookId}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<BookInventoryData> reinventory(@PathVariable final String bookId,
+    @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<BookInventoryData> reinventory(@PathVariable("id") final String bookId,
                                                          @RequestBody final BookInventoryData inventoryData) {
+        final BookId id = BookId.of(bookId);
         final ISBN isbn = ISBN.from(inventoryData.isbn);
         final Title title = Title.of(inventoryData.title);
         final StockQuantity stockQuantity = StockQuantity.of(inventoryData.stockQuantity);
@@ -56,8 +57,7 @@ public class BookResource {
         final List<Genre> genres = Genre.of(inventoryData.genres);
 
         final Book inventoriedBook =
-                bookReinventoryUseCase.reinventory(BookId.of(bookId), ISBN.from(inventoryData.isbn),
-                        title, stockQuantity, authors, genres);
+                bookReinventoryUseCase.reinventory(id, isbn, title, stockQuantity, authors, genres);
 
         return ResponseEntity.ok().body(BookInventoryData.from(inventoriedBook));
     }
