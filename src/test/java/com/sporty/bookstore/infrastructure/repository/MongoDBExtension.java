@@ -31,8 +31,7 @@ public class MongoDBExtension implements BeforeAllCallback, AfterEachCallback {
         this.container = new MongoDBContainer(dockerImage);
         this.container.start();
 
-        //Skip auto-closeable handling.
-        //Client lifecycle should be managed by TestContainers
+        //Skip auto-closeable handling, client lifecycle should be managed by TestContainers
         final MongoClient client =
                 MongoClients.create(container.getConnectionString());
 
@@ -46,11 +45,15 @@ public class MongoDBExtension implements BeforeAllCallback, AfterEachCallback {
 
     @Override
     public void afterEach(ExtensionContext context) {
-        testDatabase.listCollectionNames().map(testDatabase::getCollection).forEach(MongoCollection::drop);
+        cleanDatabase();
     }
 
     private Properties loadProperties() throws IOException {
         return PropertiesLoaderUtils.loadProperties(new ClassPathResource("/application.properties"));
+    }
+
+    private void cleanDatabase() {
+        testDatabase.listCollectionNames().map(testDatabase::getCollection).forEach(MongoCollection::drop);
     }
 
 }
