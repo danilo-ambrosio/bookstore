@@ -3,6 +3,7 @@ package com.sporty.bookstore.infrastructure.api.resource;
 import com.sporty.bookstore.domain.model.inventory.*;
 import com.sporty.bookstore.infrastructure.api.resource.data.BookInventoryData;
 import com.sporty.bookstore.usecase.inventory.BookInventoryListUseCase;
+import com.sporty.bookstore.usecase.inventory.BookInventoryRemovalUseCase;
 import com.sporty.bookstore.usecase.inventory.BookInventoryUseCase;
 import com.sporty.bookstore.usecase.inventory.BookReinventoryUseCase;
 import org.springframework.http.HttpStatus;
@@ -24,13 +25,16 @@ public class BookResource {
     private final BookInventoryUseCase bookInventoryUseCase;
     private final BookReinventoryUseCase bookReinventoryUseCase;
     private final BookInventoryListUseCase bookInventoryListUseCase;
+    private final BookInventoryRemovalUseCase bookInventoryRemovalUseCase;
 
     public BookResource(final BookInventoryUseCase bookInventoryUseCase,
                         final BookReinventoryUseCase bookReinventoryUseCase,
-                        final BookInventoryListUseCase bookInventoryListUseCase) {
+                        final BookInventoryListUseCase bookInventoryListUseCase,
+                        final BookInventoryRemovalUseCase bookInventoryRemovalUseCase) {
         this.bookInventoryUseCase = bookInventoryUseCase;
         this.bookReinventoryUseCase = bookReinventoryUseCase;
         this.bookInventoryListUseCase = bookInventoryListUseCase;
+        this.bookInventoryRemovalUseCase = bookInventoryRemovalUseCase;
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -60,6 +64,12 @@ public class BookResource {
                 bookReinventoryUseCase.reinventory(id, isbn, title, stockQuantity, authors, genres);
 
         return ResponseEntity.ok().body(BookInventoryData.from(inventoriedBook));
+    }
+
+    @DeleteMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<BookInventoryData> remove(@PathVariable final String id) {
+        bookInventoryRemovalUseCase.remove(BookId.of(id));
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)

@@ -4,13 +4,16 @@ import com.google.gson.reflect.TypeToken;
 import com.sporty.bookstore.infrastructure.api.resource.data.BookInventoryData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.ResultActions;
 
+import java.util.List;
+
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@DirtiesContext
 public class BookInventoryResourceTest extends ResourceTest {
 
     @Test
@@ -57,5 +60,45 @@ public class BookInventoryResourceTest extends ResourceTest {
         Assertions.assertEquals(designPatternsBook.stockQuantity, reinventoriedBookData.stockQuantity);
         Assertions.assertEquals(designPatternsBook.authors, reinventoriedBookData.authors);
         Assertions.assertEquals(designPatternsBook.genres, reinventoriedBookData.genres);
+    }
+
+    @Test
+    public void testThatInventoriedBooksAreRetrieved() throws Exception {
+        final BookInventoryData effectiveJavaBook = BookInventoryTestData.effectiveJavaBook();
+        final BookInventoryData designPatternsBook = BookInventoryTestData.designPatternsBook();
+
+        this.mockMvc.perform(post("/books").contentType(APPLICATION_JSON_VALUE)
+                .content(asJson(effectiveJavaBook))).andExpect(status().isCreated());
+
+        this.mockMvc.perform(post("/books").contentType(APPLICATION_JSON_VALUE)
+                .content(asJson(designPatternsBook))).andExpect(status().isCreated());
+
+        final ResultActions response =
+                this.mockMvc.perform(get("/books")).andExpect(status().isOk());
+
+        final List<BookInventoryData> booksData = toData(response, new TypeToken<>(){});
+
+        Assertions.assertEquals(2, booksData.size());
+    }
+
+    @Test
+    public void testThatInventoriedBookIsRemoved() throws Exception {
+        final BookInventoryData effectiveJavaBook = BookInventoryTestData.effectiveJavaBook();
+
+        final ResultActions response =
+                this.mockMvc.perform(post("/books").contentType(APPLICATION_JSON_VALUE)
+                        .content(asJson(effectiveJavaBook))).andExpect(status().isCreated());
+
+        final BookInventoryData inventoriedBookData =
+                toData(response, TypeToken.get(BookInventoryData.class));
+
+        this.mockMvc.perform(delete("/books/" + inventoriedBookData.id)).andExpect(status().isOk());
+
+        final ResultActions emptyResponse =
+                this.mockMvc.perform(get("/books")).andExpect(status().isOk());
+
+        final List<BookInventoryData> booksData = toData(emptyResponse, new TypeToken<>(){});
+
+        Assertions.assertEquals(0, booksData.size());
     }
 }
