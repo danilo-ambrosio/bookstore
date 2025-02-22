@@ -5,7 +5,6 @@ import com.sporty.bookstore.infrastructure.repository.BookData;
 import com.sporty.bookstore.infrastructure.repository.BookInventoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
