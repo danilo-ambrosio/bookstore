@@ -1,6 +1,7 @@
 package com.sporty.bookstore.infrastructure.repository;
 
 import com.sporty.bookstore.domain.model.inventory.*;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceCreator;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -9,6 +10,7 @@ import java.util.List;
 @Document(collection = "book")
 public class BookData {
 
+    @Id
     public final String id;
     public final String isbn;
     public final String title;
