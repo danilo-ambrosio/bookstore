@@ -3,6 +3,13 @@ package com.sporty.bookstore.domain.model.inventory;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class represents a book in the inventory.
+ * It contains information about the book's ISBN, title, stock quantity, authors, and genres.
+ * It also provides methods to manage the book's inventory, such as destocking and reinventorying.
+ *
+ * @author Danilo Ambrosio
+ */
 public class Book {
 
     private final BookId bookId;

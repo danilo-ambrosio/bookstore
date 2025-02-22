@@ -1,7 +1,7 @@
 package com.sporty.bookstore.domain.model.user;
 
 /**
- * {@code User} contains user's credential for identity and access management.
+ * This class contains user's credential for the purpose of identity and access management.
  *
  * @author Danilo Ambrosio
  */
