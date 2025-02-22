@@ -31,9 +31,12 @@ public class MongoDBExtension implements BeforeAllCallback, AfterEachCallback {
         this.container = new MongoDBContainer(dockerImage);
         this.container.start();
 
-        try (MongoClient client = MongoClients.create(container.getConnectionString())) {
-            this.testDatabase = client.getDatabase(databaseName);
-        }
+        //Skip auto-closeable handling.
+        //Client lifecycle should be managed by TestContainers
+        final MongoClient client =
+                MongoClients.create(container.getConnectionString());
+
+        this.testDatabase = client.getDatabase(databaseName);
     }
 
     @Override
