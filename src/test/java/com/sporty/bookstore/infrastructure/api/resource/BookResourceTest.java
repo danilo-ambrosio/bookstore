@@ -61,7 +61,7 @@ public class BookResourceTest extends ResourceTest {
     }
 
     @Test
-    public void testThatInventoriedBooksAreRetrieved() throws Exception {
+    public void testThatAllInventoriedBooksAreRetrieved() throws Exception {
         final BookInventoryData effectiveJavaBook = BookInventoryTestData.effectiveJavaBook();
         final BookInventoryData designPatternsBook = BookInventoryTestData.designPatternsBook();
 
@@ -77,6 +77,25 @@ public class BookResourceTest extends ResourceTest {
         final List<BookInventoryData> booksData = toData(response, new TypeToken<>(){});
 
         Assertions.assertEquals(2, booksData.size());
+    }
+
+    @Test
+    public void testThatOnlyBooksInStockAreRetrieved() throws Exception {
+        final BookInventoryData effectiveJavaBook = BookInventoryTestData.effectiveJavaBook();
+        final BookInventoryData designPatternsBook = BookInventoryTestData.designPatternsBook();
+
+        this.mockMvc.perform(post("/books").contentType(APPLICATION_JSON_VALUE)
+                .content(asJson(effectiveJavaBook))).andExpect(status().isCreated());
+
+        this.mockMvc.perform(post("/books").contentType(APPLICATION_JSON_VALUE)
+                .content(asJson(designPatternsBook))).andExpect(status().isCreated());
+
+        final ResultActions response =
+                this.mockMvc.perform(get("/books?available=true")).andExpect(status().isOk());
+
+        final List<BookInventoryData> booksData = toData(response, new TypeToken<>(){});
+
+        Assertions.assertEquals(1, booksData.size());
     }
 
     @Test

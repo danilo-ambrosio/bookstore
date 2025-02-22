@@ -73,9 +73,8 @@ public class BookResource {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<BookInventoryData>> list() {
-        final List<BookInventoryData> bookInventoryDataList =
-                bookInventoryListUseCase.list().stream().map(BookInventoryData::from).toList();
-        return ResponseEntity.ok().body(bookInventoryDataList);
+    public ResponseEntity<List<BookInventoryData>> list(@RequestParam(value = "available", required = false) final boolean available) {
+        final List<Book> books = bookInventoryListUseCase.booksWithMinimumStockQuantity(available ? 1 : 0);
+        return ResponseEntity.ok().body(books.stream().map(BookInventoryData::from).toList());
     }
 }

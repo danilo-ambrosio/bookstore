@@ -16,7 +16,8 @@ public class BookInventoryListUseCase {
         this.bookInventoryRepository = bookInventoryRepository;
     }
 
-    public List<Book> list() {
-        return this.bookInventoryRepository.findAll().stream().map(BookData::toBook).toList();
+    public List<Book> booksWithMinimumStockQuantity(final int minimumStockQuanity) {
+        return this.bookInventoryRepository.findByStockQuantityGreaterThanEqual(minimumStockQuanity).stream().map(BookData::toBook).toList();
     }
+
 }
