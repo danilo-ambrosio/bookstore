@@ -29,6 +29,7 @@ public class UserResource {
         return ResponseEntity.status(HttpStatus.CREATED).body(UserUniqueData.from(user));
     }
 
+    //TODO: Place credentials in the header
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UserUniqueData> authenticate(@RequestParam("username") final String username,
                                                        @RequestParam("password") final String password) {
