@@ -7,11 +7,12 @@ import com.sporty.bookstore.usecase.inventory.BookInventoryRemovalUseCase;
 import com.sporty.bookstore.usecase.inventory.BookInventoryUseCase;
 import com.sporty.bookstore.usecase.inventory.BookReinventoryUseCase;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 /**
  * {@code BookInventoryResource} exposes {@link Book} resource operations via REST endpoints.
@@ -37,7 +38,7 @@ public class BookResource {
         this.bookInventoryRemovalUseCase = bookInventoryRemovalUseCase;
     }
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<BookInventoryData> inventory(@RequestBody final BookInventoryData inventoryData) {
         final Title title = Title.of(inventoryData.title);
         final StockQuantity stockQuantity = StockQuantity.of(inventoryData.stockQuantity);
@@ -50,7 +51,7 @@ public class BookResource {
         return ResponseEntity.status(HttpStatus.CREATED).body(BookInventoryData.from(inventoriedBook));
     }
 
-    @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(path = "/{id}", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<BookInventoryData> reinventory(@PathVariable("id") final String bookId,
                                                          @RequestBody final BookInventoryData inventoryData) {
         final BookId id = BookId.of(bookId);
@@ -66,13 +67,13 @@ public class BookResource {
         return ResponseEntity.ok().body(BookInventoryData.from(inventoriedBook));
     }
 
-    @DeleteMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(path = "/{id}", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<BookInventoryData> remove(@PathVariable final String id) {
         bookInventoryRemovalUseCase.remove(BookId.of(id));
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<List<BookInventoryData>> list(@RequestParam(value = "available", required = false) final boolean available) {
         final List<Book> books = bookInventoryListUseCase.booksWithMinimumStockQuantity(available ? 1 : 0);
         return ResponseEntity.ok().body(books.stream().map(BookInventoryData::from).toList());
