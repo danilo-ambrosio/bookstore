@@ -1,5 +1,6 @@
 package com.sporty.bookstore.infrastructure;
 
+import com.sporty.bookstore.domain.model.inventory.UnavailableBookException;
 import com.sporty.bookstore.usecase.identity.AuthenticationException;
 import com.sporty.bookstore.usecase.identity.UniqueUsernameException;
 import com.sporty.bookstore.usecase.inventory.BookNotFoundException;
@@ -23,6 +24,11 @@ public class ExceptionTranslator {
 
   @ExceptionHandler(value = BookNotFoundException.class )
   public ResponseEntity<Object> resolveBookNotFoundException() {
+    return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+  }
+
+  @ExceptionHandler(value = UnavailableBookException.class )
+  public ResponseEntity<Object> resolveUnavailableBookException() {
     return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
   }
 
