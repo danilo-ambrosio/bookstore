@@ -96,6 +96,10 @@ public class Book {
     }
 
     public boolean isInStock() {
-        return stockQuantity.quantity() > 0;
+        return hasStock(1);
+    }
+
+    public boolean hasStock(int desiredQuantity) {
+        return stockQuantity.quantity() >= desiredQuantity;
     }
 }
