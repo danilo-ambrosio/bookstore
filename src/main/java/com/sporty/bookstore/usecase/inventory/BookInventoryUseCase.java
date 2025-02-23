@@ -1,14 +1,14 @@
 package com.sporty.bookstore.usecase.inventory;
 
 import com.sporty.bookstore.domain.model.inventory.*;
+import com.sporty.bookstore.infrastructure.UseCase;
 import com.sporty.bookstore.infrastructure.repository.BookData;
 import com.sporty.bookstore.infrastructure.repository.BookInventoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
+@UseCase
 public class BookInventoryUseCase {
 
     private final BookInventoryRepository bookInventoryRepository;

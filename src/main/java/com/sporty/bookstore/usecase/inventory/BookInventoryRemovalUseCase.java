@@ -1,10 +1,10 @@
 package com.sporty.bookstore.usecase.inventory;
 
 import com.sporty.bookstore.domain.model.inventory.BookId;
+import com.sporty.bookstore.infrastructure.UseCase;
 import com.sporty.bookstore.infrastructure.repository.BookInventoryRepository;
-import org.springframework.stereotype.Component;
 
-@Component
+@UseCase
 public class BookInventoryRemovalUseCase {
 
     private final BookInventoryRepository bookInventoryRepository;
