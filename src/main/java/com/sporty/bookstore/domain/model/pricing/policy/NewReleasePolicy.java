@@ -5,12 +5,12 @@ import com.sporty.bookstore.domain.model.pricing.Price;
 public class NewReleasePolicy implements DiscountPolicy {
 
     @Override
-    public String name() {
-        return "NewRelease";
+    public DiscountPolicyName name() {
+        return DiscountPolicyName.NEW_RELEASE;
     }
 
     @Override
-    public Price deductDiscount(int bookQuantity, Price retailPrice, boolean useLoyaltyPoints) {
+    public Price deductDiscount(final int bookQuantity, final Price retailPrice, final boolean useLoyaltyPoints) {
         if(useLoyaltyPoints) {
             throw new PolicyNotCoveredByLoyaltyProgramException();
         }

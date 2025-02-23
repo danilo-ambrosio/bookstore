@@ -12,8 +12,8 @@ public class RegularEditionPolicy implements DiscountPolicy {
     }
 
     @Override
-    public String name() {
-        return "Regular";
+    public DiscountPolicyName name() {
+        return DiscountPolicyName.REGULAR_EDITION;
     }
 
     @Override

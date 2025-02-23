@@ -14,8 +14,8 @@ public class OldEditionPolicy implements DiscountPolicy {
     }
 
     @Override
-    public String name() {
-        return "OldEdition";
+    public DiscountPolicyName name() {
+        return DiscountPolicyName.OLD_EDITION;
     }
 
     @Override
