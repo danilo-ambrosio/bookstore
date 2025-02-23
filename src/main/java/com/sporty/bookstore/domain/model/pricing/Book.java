@@ -46,7 +46,7 @@ public class Book {
     }
 
     public double retailPrice() {
-        return retailPrice.value.doubleValue();
+        return retailPrice.value();
     }
 
     public String discountPolicyName() {
