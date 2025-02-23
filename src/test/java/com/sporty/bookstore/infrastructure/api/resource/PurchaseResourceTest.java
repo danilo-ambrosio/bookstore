@@ -12,6 +12,7 @@ import org.springframework.test.web.servlet.ResultActions;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.sporty.bookstore.domain.model.pricing.policy.DiscountPolicy.DiscountPolicyName.OLD_EDITION;
 import static com.sporty.bookstore.domain.model.pricing.policy.DiscountPolicy.DiscountPolicyName.REGULAR_EDITION;
 import static com.sporty.bookstore.infrastructure.api.resource.InventoryTestData.*;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
@@ -58,8 +59,7 @@ public class PurchaseResourceTest extends ResourceTest {
         final double samePriceForAllBooks = 41.57;
 
         final List<String> bookIds =
-                loadData(samePriceForAllBooks, REGULAR_EDITION,
-                        List.of(designPatternsBook()));
+                loadData(samePriceForAllBooks, OLD_EDITION, List.of(designPatternsBook()));
 
         final PurchaseData purchaseData =
                 PurchaseTestData.create(customerId, sameQuantityForAllBooks,
