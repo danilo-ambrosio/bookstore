@@ -16,7 +16,7 @@ public class Price {
     private static final int MONETARY_SCALE = 2;
     private static final RoundingMode DEFAULT_ROUNDING = RoundingMode.HALF_UP;
 
-    public final BigDecimal value;
+    private final BigDecimal value;
 
     public static Price of(double value) {
         return new Price(new BigDecimal(value));
@@ -35,6 +35,10 @@ public class Price {
         final BigDecimal discountAmount = this.value.multiply(discount.percentage)
                 .divide(hundred, MONETARY_SCALE, DEFAULT_ROUNDING);
         return new Price(this.value.subtract(discountAmount));
+    }
+
+    public double value() {
+        return value.doubleValue();
     }
 
     @Override
