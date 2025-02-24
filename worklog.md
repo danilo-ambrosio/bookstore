@@ -16,11 +16,11 @@ First, I carefully read the functional requirements, spending more time with tho
 In this phase, I like to draw class or sequence diagrams. Not much for documentation purpose, but mostly as design process helper.
 Here's the first domain modeling draft on my whiteboard:
 
-<img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/grooming/initial-class-diagram.jpg" alt="drawing" height="200"/>
+<img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/grooming/initial-class-diagram.jpg" alt="drawing" height="500"/>
 
 Manual drawing also helps me to roughly foresee architecture decisions and some required building blocks (entities, value objects, tests, controllers, so on). 
 
-<img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/grooming/sub-tasks.jpg" alt="drawing" height="200"/>
+<img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/grooming/sub-tasks.jpg" alt="drawing" height="500"/>
 
 By knowing that, I can also estimate the effort for each use case/user story. These bullets become fine-grained tasks that provides a more accurate personal progress indicator. 
 Self time management gives peace of mind about not being delayed and is easier to do when the time box for each amount of work to be completed is short. The smaller sub tasks are, 
