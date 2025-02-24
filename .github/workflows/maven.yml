@@ -31,11 +31,9 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: Generate JaCoCo Badge
-      run: mvn -B test --file pom.xml
       uses: cicirello/jacoco-badge-generator@v2
       with:
-        jacoco-csv-file: target/site/jacoco/jacoco.csv
-        badges-directory: target/site/jacoco/test/html/badges
+        generate-branches-badge: true
 
     - name: Publish coverage report to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4
