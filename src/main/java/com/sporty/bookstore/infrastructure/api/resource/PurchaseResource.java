@@ -28,7 +28,7 @@ public class PurchaseResource {
     }
 
     @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
-    public ResponseEntity<PurchaseData> price(@RequestBody final PurchaseData purchaseData, final Customer customer) {
+    public ResponseEntity<PurchaseData> purchase(@RequestBody final PurchaseData purchaseData, final Customer customer) {
         final List<PaymentDetail> paymentDetails = purchaseData.items.stream().map(PurchaseItemData::toDetail).toList();
         final Purchase purchase = purchaseUseCase.process(customer, paymentDetails);
         return ResponseEntity.status(HttpStatus.CREATED).body(PurchaseData.from(purchase));

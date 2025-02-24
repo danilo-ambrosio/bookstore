@@ -10,17 +10,24 @@ Here's a list of software techniques and principles adopted in this backend impl
 - Rest API: stateless, client/server architecture, unique resource identification...
 - Asynchronous operations: non-blocking propagation of domain events, supporting eventual consistency and better definition of transaction boundaries for aggregates
 - TDD: mostly implemented using the test-first approach
-Further info on this guideline [here](https://github.com/danilo-ambrosio/bookstore/blob/master/worklog.md).
+
+Further info on the [worklong](https://github.com/danilo-ambrosio/bookstore/blob/master/worklog.md).
 
 ### Framework and tools
+- [Java 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
 - [Spring Boot](https://spring.io/projects/spring-boot/) (data, core, web)
 - [Mongo DB](https://www.mongodb.com/)
 - [Maven](https://maven.apache.org) 
 - [Docker](https://www.docker.com/)
 
-### Infrastructure Requirements
+### Requirements
 
-- **This application requires a Mongo DB instance**. Therefore, it's necessary to create an environment variable named *BOOK_STORE_DATABASE_URI* through which the application can connect to the Mongo DB.
-- **Integration tests rely on a container-based MongoDB instance**, so make sure Docker is up and running before executing tests.
+- All infrastructure dependencies are managed by Docker, so it's mandatory to install such tool and keep it up and running. Integration tests also rely on containers.
 
-## Out of Scope
+### How to run the app
+
+The following command will setup and run the app and a MongoDB instance:
+
+```
+docker compose up --build
+```
