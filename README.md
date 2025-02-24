@@ -51,3 +51,7 @@ In addition, a container for MongoDB will also be up on port 27017.
 ### API
 
 The API documentation is available [here](https://editor.swagger.io/?raw=https://raw.githubusercontent.com/danilo-ambrosio/bookstore/refs/heads/master/assets/api_doc.json)
+
+### Main User Flow
+
+TODO: Add some curl commands here to consume Rest API (User registration/authentication, Inventory, Pricing Policies, Loyalty Query...)
