@@ -69,4 +69,7 @@ automatically set by a post-response script in Postman.
 
 ### Book Inventory
 
+One of the assumptions to perform any operation in the Book Store is to have inventoried books. It's recommended to add at least three books with a reasonable stock quantity so, later, there will be enough data to test different payment methods, discount policies and loyalty points accumulation.
+
+<img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/postman/04-step-inventory-books.png" alt="inventory-books" />
 
