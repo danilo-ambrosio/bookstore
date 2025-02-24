@@ -95,4 +95,15 @@ Once pricing is done, you can optionally call the discount calculation endpoint,
 
 ### Purchase
 
+Assuming there are at least 3 inventoried/priced books, a purchase request only demands payment method and quantity. The side effect of this operation is to accumulate loyalty points for the logged `userId`.
+This field will be retrieved on the backend as Postman automatically saved its value in the authentication step and also sends in the request header.
 
+<img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/postman/09-step-purchase.png" alt="book-discount" />
+
+> Other consequence of purchasing books is to decrease stock quantity in the book inventory. 
+
+### Loyalty Points
+
+Purchased books mean loyalty points. If the previous step succeeded, let's have a look at how many loyalty points were added:
+
+<img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/postman/10-step-loyalty.png" alt="book-discount" />
