@@ -46,6 +46,6 @@ Schemas and endpoints are documented in this [Open API file](https://editor.swag
 
 This app can be tested by using [this API collection](https://github.com/danilo-ambrosio/bookstore/blob/2f4d427e2ec24ac8bd79cd0c6689c723f4227826/assets/postman/book-store.postman_collection.json) which can be directly imported to Postman. 
 
-Having the collection in your workspace, the first step is to edit user's credentials in the collection variables panel:
+Having the collection in your workspace, the first step is to edit user's credentials (username and password) in the collection variables panel:
 
-<img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/postman/01-step-credentials" alt="drawing" />
+<img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/postman/01-step-credentials.png" alt="drawing" />
