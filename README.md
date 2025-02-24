@@ -15,11 +15,11 @@ Here's a list of software techniques and principles adopted in this backend impl
 - Asynchronous operations: non-blocking propagation of domain events, supporting eventual consistency and better definition of transaction boundaries for aggregates
 - TDD: mostly implemented using the test-first approach
 
-### Worklog
+## Worklog
 
 I created a [worklog](https://github.com/danilo-ambrosio/bookstore/blob/master/worklog.md) containing detailed information on my thought process during the project implementation. 
 
-### Framework and tools
+## Framework and tools
 - [Java 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
 - [Spring Boot](https://spring.io/projects/spring-boot/) (data, core, web)
 - [Mongo DB](https://www.mongodb.com/)
@@ -44,7 +44,7 @@ Just a short list of things I couldn't implement due to time constraints:
 - Database optimization
 - HATEOAS
 
-### How to run the app
+## How to run the app
 
 The following command will compile, package and run the app on *localhost:8080*, while MongoDB will also be up on port 27017:
 
@@ -54,4 +54,4 @@ docker compose up --build
 
 ### Exploring Use Cases via Postman
 
-
+Book Store features can be tested by using this postman collection.
