@@ -2,6 +2,12 @@ package com.sporty.bookstore.domain.model.purchase;
 
 import java.util.List;
 
+/**
+ * This class represents a purchase made by a customer.
+ * It contains information about the purchase ID, customer, and payments associated with the purchase.
+ *
+ * @author Danilo Ambrosio
+ */
 public class Purchase {
 
     private final PurchaseId purchaseId;

@@ -1,5 +1,13 @@
 package com.sporty.bookstore.domain.model.loyalty;
 
+/**
+ * This class represents the loyalty program for a beneficiary.
+ * It keeps track of the total points accumulated by the beneficiary
+ * and provides methods to use and accumulate points based on the
+ * number of books purchased.
+ *
+ * @author Danilo Ambrosio
+ */
 public class Loyalty {
 
     private final Beneficiary beneficiary;
