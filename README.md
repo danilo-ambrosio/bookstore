@@ -1,4 +1,7 @@
+
+
 # Online Book Store
+![ci workflow](https://github.com/danilo-ambrosio/bookstore/actions/workflows/maven.yml/badge.svg)
 
 Backend for an online book store app supporting features as inventory management, purchase/pricing and loyalty program.
 
@@ -44,3 +47,4 @@ docker compose up --build
 
 In addition, a container for MongoDB will also be up on port 27017.
 
+### CI/CD
