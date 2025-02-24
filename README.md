@@ -46,7 +46,7 @@ app-1      | 2025-02-24T17:11:36.347Z  INFO 1 --- [bookstore] [           main] 
 mongodb-1  | {"t":{"$date":"2025-02-24T17:11:36.602+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"172.18.0.3:48832","uuid":{"uuid":{"$uuid":"c5557c00-2df4-4dfb-abb6-8b97440d6989"}},"connectionId":1,"connectionCount":1}}
 ```
 
-## Exploring Book Store via Postman
+## Exploring Book Store features via Postman
 
 This app can be tested by using [this API collection](https://github.com/danilo-ambrosio/bookstore/blob/2f4d427e2ec24ac8bd79cd0c6689c723f4227826/assets/postman/book-store.postman_collection.json) which can be directly imported to Postman. Further info on API schemas can be found in this [Open API file](https://editor.swagger.io/?raw=https://raw.githubusercontent.com/danilo-ambrosio/bookstore/refs/heads/master/assets/api_doc.json).  
 
@@ -74,4 +74,7 @@ One of the assumptions to perform any operation in the Book Store is to have inv
 <img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/postman/04-step-inventory-books.png" alt="inventory-books" />
 
 To speed up the process of saving/referencing the added books, let's also consume the `inventoried books` list endpoint. By doing that, Postman will automatically save every bookId in the collection variables storage.
+> Available inventoried books (i.e. stock quantity greater than 0) can be filtered by setting a request param `?available=true`
+
+<img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/postman/05-step-inventoried-books-list.png" alt="inventoried-books" />
 
