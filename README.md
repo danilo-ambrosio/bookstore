@@ -69,7 +69,9 @@ automatically set by a post-response script in Postman.
 
 ### Book Inventory
 
-One of the assumptions to perform any operation in the Book Store is to have inventoried books. It's recommended to add at least three books with a reasonable stock quantity so, later, there will be enough data to test different payment methods, discount policies and loyalty points accumulation.
+One of the assumptions to perform any operation in the Book Store is to have inventoried books. It's recommended to add at least three books with a reasonable stock quantity as shown below so, later, there will be enough data to test different payment methods, discount policies and loyalty points accumulation.
 
 <img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/postman/04-step-inventory-books.png" alt="inventory-books" />
+
+To speed up the process of saving/referencing the added books, let's also consume the `inventoried books` list endpoint. By doing that, Postman will automatically save every bookId in the collection variables storage.
 
