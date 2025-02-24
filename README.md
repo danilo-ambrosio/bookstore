@@ -62,7 +62,7 @@ There's no validation rule for username and password, any text is acceptable. So
 
 <img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/postman/03-step-authorization.png" alt="authentication" />
 
-> The current version of the app actually emulates an authentication process just by ensuring userId in the header 
+> The current version of the app actually emulates an authentication process just by ensuring userId is in the header 
 
 Changing the payload/request param is not needed as Postman will inject `username` and `password` variables. After the user is successfully logged in, the `userId` header param is
 automatically set by a post-response script in Postman.
