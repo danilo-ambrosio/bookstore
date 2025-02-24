@@ -33,9 +33,10 @@ All infrastructure dependencies are managed by Docker, so it's mandatory to inst
 ### Out of Scope
 
 Just a short list of things I couldn't implement due to time constraints:
-- Thorough and more secure authentication/authorization layer
-- Monitoring (logging, meaningful exception messages) 
-- Better management of asynchronous components, eventual consistency (DomainEvents pub/sub)
+- Input validation
+- Secure authentication/authorization layer (Spring Security supports different standards)
+- Monitoring (logging, meaningful exception messages)
+- Better management of asynchronous operations, eventual consistency (e.g. DomainEvents pub/sub)
 - Database optimization
 - HATEOAS
 
