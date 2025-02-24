@@ -47,6 +47,6 @@ docker compose up --build
 
 In addition, a container for MongoDB will also be up on port 27017.
 
-### API DOC
+### API
 
-[API DOC](https://editor.swagger.io/?raw=https://raw.githubusercontent.com/danilo-ambrosio/bookstore/refs/heads/master/assets/api_doc.json)
+The API documentation is available [here](https://editor.swagger.io/?raw=https://raw.githubusercontent.com/danilo-ambrosio/bookstore/refs/heads/master/assets/api_doc.json)
