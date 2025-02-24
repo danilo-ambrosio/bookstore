@@ -74,7 +74,9 @@ One of the assumptions to perform any operation in the Book Store is to have inv
 <img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/postman/04-step-inventory-books.png" alt="inventory-books" />
 
 To speed up the process of saving/referencing the added books, let's also consume the `inventoried books` list endpoint. By doing that, Postman will automatically save every bookId in the collection variables storage.
-> Available inventoried books (i.e. stock quantity greater than 0) can be filtered by setting a request param `?available=true`
 
 <img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/postman/05-step-inventoried-books-list.png" alt="inventoried-books" />
 
+> Available inventoried books (i.e. stock quantity greater than 0) can be filtered by setting a request param `?available=true`
+ 
+### Book Pricing
