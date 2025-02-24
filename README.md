@@ -63,7 +63,7 @@ There's no validation rule for username and password, any text is acceptable. So
 Changing the payload is not needed as Postman will inject `username` and `password` variables. After signing up, it's required to authenticate as 
 some endpoints requires a logged user.
 
-<img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/postman/03-step-authorization.png" style="height: 50px; overflow: hidden;" alt="drawing" />
+<img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/postman/03-step-authorization.png" style="margin: -40px 0px 0px -120px;" alt="drawing" />
 
 > The current version of the app actually emulates an authentication process just by getting userId in the header 
 
