@@ -80,3 +80,19 @@ To speed up the process of saving/referencing the added books, let's also consum
 > Available inventoried books (i.e. stock quantity greater than 0) can be filtered by setting a request param `?available=true`
  
 ### Book Pricing
+
+Next, retail price has to be defined along with a discount policy/book type (`NEW_RELEASE`, `OLD_EDITION` and `REGULAR_EDITION`). The pricing process is made for each book so make sure you will update the collection variable (e.g `bookId1`, `bookId2`, so on) in the params before submitting the request.
+
+<img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/postman/06-step-book-pricing.png" alt="book-pricing" />
+
+<img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/postman/07-step-book-pricing-payload.png" alt="book-pricing-payload" />
+
+Once pricing is done, you can optionally call the discount calculation endpoint, setting `quantity` and `useLoyaltyPoints` request parameters, just to see how the policy affects the price.
+
+<img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/postman/08-step-book-discount-calculation.png" alt="book-discount" />
+
+> This is a read-only endpoint to demonstrate how discount policies are applied. Retail price won't be changed after the discount calculation.
+
+### Purchase
+
+
