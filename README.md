@@ -49,4 +49,4 @@ In addition, a container for MongoDB will also be up on port 27017.
 
 ### API DOC
 
-![API DOC](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/danilo-ambrosio/bookstore/refs/heads/master/assets/openapi.yaml)
+[API DOC](https://editor.swagger.io/?raw=https://raw.githubusercontent.com/danilo-ambrosio/bookstore/refs/heads/master/assets/api_doc.json)
