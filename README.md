@@ -17,32 +17,18 @@ Here's a list of software techniques and principles adopted in this backend impl
 
 ## Worklog
 
-I created a [worklog](https://github.com/danilo-ambrosio/bookstore/blob/master/worklog.md) containing detailed information on my thought process during the project implementation. 
+This is a [worklog](https://github.com/danilo-ambrosio/bookstore/blob/master/worklog.md) containing detailed information on my thought process during the project implementation. 
 
-## Framework and tools
+## Requirements
+
+All infrastructure dependencies are managed by Docker, so it's mandatory to install it and keep it up and running. Integration tests also rely on containers.
+
+###  Framework and tools
 - [Java 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
 - [Spring Boot](https://spring.io/projects/spring-boot/) (data, core, web)
 - [Mongo DB](https://www.mongodb.com/)
-- [Maven](https://maven.apache.org) 
+- [Maven](https://maven.apache.org)
 - [Docker](https://www.docker.com/)
-
-### Requirements
-
-All infrastructure dependencies are managed by Docker, so it's mandatory to install such tool and keep it up and running. Integration tests also rely on containers.
-
-### API
-
-Schemas and endpoints are documented in this [Open API file](https://editor.swagger.io/?raw=https://raw.githubusercontent.com/danilo-ambrosio/bookstore/refs/heads/master/assets/api_doc.json)
-
-### Out of Scope
-
-Just a short list of things I couldn't implement due to time constraints:
-- Input validation
-- Secure authentication/authorization layer (Spring Security supports different standards)
-- Monitoring (logging, meaningful exception messages)
-- Better management of asynchronous operations, eventual consistency (e.g. DomainEvents pub/sub)
-- Database optimization
-- HATEOAS
 
 ## How to run the app
 
@@ -51,6 +37,11 @@ The following command will compile, package and run the app on *localhost:8080*,
 ```
 docker compose up --build
 ```
+
+### API
+
+Schemas and endpoints are documented in this [Open API file](https://editor.swagger.io/?raw=https://raw.githubusercontent.com/danilo-ambrosio/bookstore/refs/heads/master/assets/api_doc.json)
+
 
 ### Exploring Use Cases via Postman
 
