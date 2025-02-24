@@ -9,7 +9,7 @@ import java.util.Objects;
  * Every monetary calculation is ultimately encapsulated by {@code Price} in order
  * to keep mathematical accuracy.
  *
- * @author  Danilo Ambrosio
+ * @author Danilo Ambrosio
  */
 public class Price {
 

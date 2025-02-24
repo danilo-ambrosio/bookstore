@@ -2,7 +2,7 @@ package com.sporty.bookstore.usecase.inventory;
 
 import com.sporty.bookstore.domain.model.inventory.*;
 import com.sporty.bookstore.infrastructure.UseCase;
-import com.sporty.bookstore.infrastructure.repository.BookData;
+import com.sporty.bookstore.infrastructure.repository.BookInventoryData;
 import com.sporty.bookstore.infrastructure.repository.BookInventoryRepository;
 
 import java.util.List;
@@ -29,7 +29,7 @@ public class BookReinventoryUseCase {
 
         inventoriedBook.reinventory(isbn, title, stockQuantity, authors, genres);
 
-        this.bookInventoryRepository.save(BookData.from(inventoriedBook));
+        this.bookInventoryRepository.save(BookInventoryData.from(inventoriedBook));
 
         return inventoriedBook;
     }

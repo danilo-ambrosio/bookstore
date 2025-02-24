@@ -1,6 +1,7 @@
 package com.sporty.bookstore.infrastructure;
 
 import com.sporty.bookstore.domain.model.inventory.UnavailableBookException;
+import com.sporty.bookstore.domain.model.loyalty.InsufficientLoyaltyPointsException;
 import com.sporty.bookstore.usecase.identity.AuthenticationException;
 import com.sporty.bookstore.usecase.identity.UniqueUsernameException;
 import com.sporty.bookstore.usecase.inventory.BookNotFoundException;
@@ -34,6 +35,11 @@ public class ExceptionTranslator {
 
   @ExceptionHandler(value = UniqueUsernameException.class )
   public ResponseEntity<Object> resolveUniqueUsernameException() {
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+  }
+
+  @ExceptionHandler(value = InsufficientLoyaltyPointsException.class )
+  public ResponseEntity<Object> resolveInsufficientLoyaltyPointsException() {
     return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
   }
 

@@ -8,6 +8,8 @@ public interface DiscountPolicy {
 
     Price deductDiscount(final int bookQuantity, final Price retailPrice, final boolean useLoyaltyPoints);
 
+    boolean canUseLoyaltyPoints();
+
     enum DiscountPolicyName {
         NEW_RELEASE,
         OLD_EDITION,

@@ -16,4 +16,14 @@ public class NewReleasePolicy implements DiscountPolicy {
         }
         return retailPrice;
     }
+
+    @Override
+    public boolean canUseLoyaltyPoints() {
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return name().toString();
+    }
 }

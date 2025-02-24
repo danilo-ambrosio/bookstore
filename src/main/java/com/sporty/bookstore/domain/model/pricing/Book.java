@@ -41,12 +41,20 @@ public class Book {
         return discountPolicy.deductDiscount(quantity, retailPrice, useLoyaltyPoints);
     }
 
+    public boolean canUseLoyaltyPoints() {
+        return discountPolicy.canUseLoyaltyPoints();
+    }
+
     public String bookId() {
         return bookId.value();
     }
 
     public double retailPrice() {
         return retailPrice.value();
+    }
+
+    public DiscountPolicy discountPolicy() {
+        return discountPolicy;
     }
 
     public String discountPolicyName() {

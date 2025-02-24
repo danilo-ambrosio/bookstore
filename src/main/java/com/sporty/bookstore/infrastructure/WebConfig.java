@@ -13,7 +13,7 @@ public class WebConfig implements WebMvcConfigurer {
 
   @Override
   public void addArgumentResolvers(final List<HandlerMethodArgumentResolver> argumentResolvers) {
-    argumentResolvers.add(new CustomerArgumentResolver());
+    argumentResolvers.add(new AuthenticatedUserArgumentResolver());
   }
 
   @Bean

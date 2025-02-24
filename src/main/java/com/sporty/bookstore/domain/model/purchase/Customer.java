@@ -8,4 +8,7 @@ public record Customer(UserId userId) {
         return new Customer(UserId.of(userId));
     }
 
+    public String id() {
+        return userId.value();
+    }
 }

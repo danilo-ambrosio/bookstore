@@ -51,13 +51,17 @@ public class PaymentDetail implements Bundle {
         return totalPrice.value();
     }
 
-    public boolean isPayedWithLoyaltyPoints() {
-        return paymentMethod.equals(LOYALTY_POINTS);
-    }
-
     @Override
     public boolean useLoyaltyPoints() {
-        return isPayedWithLoyaltyPoints();
+        return isPayedWith(LOYALTY_POINTS);
+    }
+
+    public boolean isNotPayedWithLoyalPoints() {
+        return !isPayedWith(LOYALTY_POINTS);
+    }
+
+    public boolean isPayedWith(final PaymentMethod paymentMethod) {
+        return this.paymentMethod.equals(paymentMethod);
     }
 
 }

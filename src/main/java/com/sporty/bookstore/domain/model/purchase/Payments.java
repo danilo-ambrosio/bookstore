@@ -3,6 +3,7 @@ package com.sporty.bookstore.domain.model.purchase;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Payments {
 
@@ -29,4 +30,17 @@ public class Payments {
                 .mapToDouble(PaymentDetail::totalPrice)
                 .reduce(0, Double::sum);
     }
+
+    public int quantityCoveredWithLoyaltyPoints() {
+        return countQuantity(PaymentDetail::useLoyaltyPoints);
+    }
+
+    public int quantityPayed() {
+        return countQuantity(PaymentDetail::isNotPayedWithLoyalPoints);
+    }
+
+    private int countQuantity(final Predicate<PaymentDetail> condition) {
+        return details.stream().filter(condition).mapToInt(PaymentDetail::quantity).reduce(0, Integer::sum);
+    }
+
 }

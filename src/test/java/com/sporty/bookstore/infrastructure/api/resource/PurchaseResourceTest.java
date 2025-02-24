@@ -1,15 +1,12 @@
 package com.sporty.bookstore.infrastructure.api.resource;
 
 import com.google.gson.reflect.TypeToken;
-import com.sporty.bookstore.domain.model.pricing.policy.DiscountPolicy.DiscountPolicyName;
-import com.sporty.bookstore.infrastructure.api.resource.data.InventoryData;
-import com.sporty.bookstore.infrastructure.api.resource.data.PricingData;
+import com.sporty.bookstore.domain.model.purchase.PaymentMethod;
 import com.sporty.bookstore.infrastructure.api.resource.data.PurchaseData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.web.servlet.ResultActions;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.sporty.bookstore.domain.model.pricing.policy.DiscountPolicy.DiscountPolicyName.OLD_EDITION;
@@ -22,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class PurchaseResourceTest extends ResourceTest {
 
     @Test
-    public void testThatPurchaseWithBooksInStockIsProcessed() throws Exception {
+    public void testThatPurchaseWithBooksInStockIsProcessedUsingCreditCard() throws Exception {
         final String customerId = "1";
         final int sameQuantityForAllBooks = 8;
         final double samePriceForAllBooks = 87.5;
@@ -34,7 +31,7 @@ public class PurchaseResourceTest extends ResourceTest {
 
         final PurchaseData purchaseData =
                 PurchaseTestData.create(customerId, sameQuantityForAllBooks,
-                        samePriceForAllBooks, bookIds);
+                        samePriceForAllBooks, PaymentMethod.CREDIT_CARD, bookIds);
 
         final ResultActions response =
                 this.mockMvc.perform(post("/purchases").header("userId", customerId)
@@ -53,7 +50,7 @@ public class PurchaseResourceTest extends ResourceTest {
     }
 
     @Test
-    public void testThatPurchaseWithUnavailableBooksIsNotProcessed() throws Exception {
+    public void testThatPurchaseUnavailableBooksIsNotProcessed() throws Exception {
         final String customerId = "1";
         final int sameQuantityForAllBooks = 3;
         final double samePriceForAllBooks = 41.57;
@@ -63,34 +60,12 @@ public class PurchaseResourceTest extends ResourceTest {
 
         final PurchaseData purchaseData =
                 PurchaseTestData.create(customerId, sameQuantityForAllBooks,
-                        samePriceForAllBooks, bookIds);
+                        samePriceForAllBooks, PaymentMethod.CREDIT_CARD, bookIds);
 
         this.mockMvc.perform(post("/purchases").header("userId", customerId).contentType(APPLICATION_JSON_VALUE)
                 .content(asJson(purchaseData))).andExpect(status().isNotFound());
     }
 
-    private List<String> loadData(final double bookPrice,
-                                  final DiscountPolicyName policy,
-                                  final List<InventoryData> books) throws Exception {
-        final List<String> bookIds = new ArrayList<>();
-        for(final InventoryData inventoryData : books) {
-            final String bookId = loadInventory(inventoryData);
-            bookIds.add(bookId);
-            loadPricing(bookId, PricingData.from(bookPrice, policy.name()));
-        }
-        return bookIds;
-    }
 
-    private String loadInventory(final InventoryData inventoryData) throws Exception {
-        final ResultActions response =
-            this.mockMvc.perform(post("/books").contentType(APPLICATION_JSON_VALUE)
-                    .content(asJson(inventoryData))).andExpect(status().isCreated());
-        return toData(response, TypeToken.get(InventoryData.class)).id;
-    }
-
-    private void loadPricing(final String bookId, final PricingData pricingData) throws Exception {
-        this.mockMvc.perform(post("/books/" + bookId + "/price").contentType(APPLICATION_JSON_VALUE)
-                .content(asJson(pricingData))).andExpect(status().isCreated());
-    }
 
 }

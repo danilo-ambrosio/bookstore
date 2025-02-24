@@ -11,7 +11,7 @@ public class InventoryTestData {
                 "1",
                 "9780134685991",
                 "Effective Java",
-                15,
+                300,
                 List.of("Joshua Bloch"),
                 List.of("Programming", "Java")
         );

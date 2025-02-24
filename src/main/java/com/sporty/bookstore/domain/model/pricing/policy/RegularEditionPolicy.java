@@ -30,4 +30,14 @@ public class RegularEditionPolicy implements DiscountPolicy {
     private boolean hasDiscount(int bookQuantity) {
         return bookQuantity >= 3;
     }
+
+    @Override
+    public boolean canUseLoyaltyPoints() {
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return name().toString();
+    }
 }

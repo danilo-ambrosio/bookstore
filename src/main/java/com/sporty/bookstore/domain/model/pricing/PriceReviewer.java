@@ -1,8 +1,8 @@
 package com.sporty.bookstore.domain.model.pricing;
 
 import com.sporty.bookstore.domain.model.bundle.Bundle;
-import com.sporty.bookstore.domain.model.pricing.policy.DiscountPolicies;
 import com.sporty.bookstore.infrastructure.DomainService;
+import com.sporty.bookstore.infrastructure.repository.BookPricingData;
 import com.sporty.bookstore.infrastructure.repository.BookPricingRepository;
 
 /**
@@ -14,18 +14,15 @@ import com.sporty.bookstore.infrastructure.repository.BookPricingRepository;
 @DomainService
 public class PriceReviewer {
 
-    private final DiscountPolicies discountPolicies;
     private final BookPricingRepository repository;
 
-    public PriceReviewer(final DiscountPolicies discountPolicies,
-                         final BookPricingRepository repository) {
-        this.discountPolicies = discountPolicies;
+    public PriceReviewer(final BookPricingRepository repository) {
         this.repository = repository;
     }
 
     public Price review(final Bundle bundle) {
         return repository.findById(bundle.bookId())
-                .map(data -> data.toBook(discountPolicies::withName))
+                .map(BookPricingData::toBook)
                 .map(book -> book.deductDiscount(bundle.quantity(), bundle.useLoyaltyPoints()))
                 .orElse(Price.of(0)); //TODO: Check how to handle BookNotFound
     }

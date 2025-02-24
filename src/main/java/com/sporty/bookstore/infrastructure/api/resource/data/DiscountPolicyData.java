@@ -8,7 +8,7 @@ public class DiscountPolicyData {
     public final String policyName;
 
     public static DiscountPolicyData from(final BookPricingData pricingData) {
-        return new DiscountPolicyData(pricingData.bookId, pricingData.discountPolicy);
+        return new DiscountPolicyData(pricingData.bookId, pricingData.discountPolicy.toString());
     }
 
     public static DiscountPolicyData from(final String bookId, final String policyName) {

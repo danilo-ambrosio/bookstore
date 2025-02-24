@@ -2,7 +2,7 @@ package com.sporty.bookstore.usecase.inventory;
 
 import com.sporty.bookstore.domain.model.inventory.Book;
 import com.sporty.bookstore.infrastructure.UseCase;
-import com.sporty.bookstore.infrastructure.repository.BookData;
+import com.sporty.bookstore.infrastructure.repository.BookInventoryData;
 import com.sporty.bookstore.infrastructure.repository.BookInventoryRepository;
 
 import java.util.List;
@@ -18,7 +18,7 @@ public class BookInventoryListUseCase {
 
     public List<Book> booksWithMinimumStockQuantity(final int minimumStockQuantity) {
         return this.bookInventoryRepository.findByStockQuantityGreaterThanEqual(minimumStockQuantity)
-                .stream().map(BookData::toBook).toList();
+                .stream().map(BookInventoryData::toBook).toList();
     }
 
 }

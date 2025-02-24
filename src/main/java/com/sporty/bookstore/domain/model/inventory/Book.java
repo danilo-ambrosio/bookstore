@@ -19,20 +19,6 @@ public class Book {
     private final List<Author> authors = new ArrayList<>();
     private final List<Genre> genres = new ArrayList<>();
 
-    private Book(final BookId bookId,
-                 final ISBN isbn,
-                 final Title title,
-                 final StockQuantity stockQuantity,
-                 final List<Author> authors,
-                 final List<Genre> genres) {
-        this.bookId = bookId;
-        this.isbn = isbn;
-        this.title = title;
-        this.stockQuantity = stockQuantity;
-        this.authors.addAll(authors);
-        this.genres.addAll(genres);
-    }
-
     public static Book of(final BookId bookId,
                           final ISBN isbn,
                           final Title title,
@@ -48,6 +34,20 @@ public class Book {
                                  final List<Author> authors,
                                  final List<Genre> genres) {
         return Book.of(BookId.create(), code, title, stockQuantity, authors, genres);
+    }
+
+    private Book(final BookId bookId,
+                 final ISBN isbn,
+                 final Title title,
+                 final StockQuantity stockQuantity,
+                 final List<Author> authors,
+                 final List<Genre> genres) {
+        this.bookId = bookId;
+        this.isbn = isbn;
+        this.title = title;
+        this.stockQuantity = stockQuantity;
+        this.authors.addAll(authors);
+        this.genres.addAll(genres);
     }
 
     public void reinventory(final ISBN code,

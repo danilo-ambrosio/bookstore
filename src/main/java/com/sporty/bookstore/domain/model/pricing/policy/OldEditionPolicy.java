@@ -32,4 +32,14 @@ public class OldEditionPolicy implements DiscountPolicy {
     private boolean hasBonusDiscount(int bookQuantity) {
         return bookQuantity >= 3;
     }
+
+    @Override
+    public boolean canUseLoyaltyPoints() {
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return name().toString();
+    }
 }
