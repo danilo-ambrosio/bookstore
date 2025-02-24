@@ -60,9 +60,13 @@ There's no validation rule for username and password, any text is acceptable. So
 
 <img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/postman/02-step-registration.png" alt="registration" />
 
-<img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/postman/03-step-authorization.png" style="margin: -40px 0px 0px -120px;" alt="authentication" />
+<img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/postman/03-step-authorization.png" style="width: 50px; height: 50px; overflow: hidden;" alt="authentication" />
 
-> The current version of the app actually emulates an authentication process just by getting userId in the header 
+> The current version of the app actually emulates an authentication process just by ensuring userId in the header 
 
-Changing the payload is not needed as Postman will inject `username` and `password` variables. After signing up, it's required to authenticate as
-some endpoints requires a logged user.
+Changing the payload/request param is not needed as Postman will inject `username` and `password` variables. After the user is successfully logged in, the `userId` header param is
+automatically set by a post-response script in Postman.
+
+### Book Inventory
+
+
