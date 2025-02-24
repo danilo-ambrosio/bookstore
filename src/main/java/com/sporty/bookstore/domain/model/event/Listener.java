@@ -7,6 +7,6 @@ package com.sporty.bookstore.domain.model.event;
  */
 public interface Listener<T extends DomainEvent> {
 
-    void on(DomainEvent event);
+    void on(T event);
 
 }

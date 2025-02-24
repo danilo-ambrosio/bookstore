@@ -21,7 +21,7 @@ public class LoyaltyPointsUpdateListener implements Listener<PurchaseProcessed> 
     }
 
     @Override
-    public void on(final DomainEvent event) {
+    public void on(final PurchaseProcessed event) {
         final String beneficiaryId = event.customerId;
         createIfNotExists(beneficiaryId);
         loyaltyRepository.findById(event.customerId)

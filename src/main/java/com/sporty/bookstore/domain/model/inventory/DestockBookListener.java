@@ -22,7 +22,7 @@ public class DestockBookListener implements Listener<PurchaseProcessed> {
     }
 
     @Override
-    public void on(final DomainEvent event) {
+    public void on(final PurchaseProcessed event) {
         event.paymentDetails().forEach(detail -> destock(detail.bookId(), detail.quantity()));
     }
 

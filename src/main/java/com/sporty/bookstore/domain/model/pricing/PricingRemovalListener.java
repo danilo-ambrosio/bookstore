@@ -20,7 +20,7 @@ public class PricingRemovalListener implements Listener<BookRemoved> {
     }
 
     @Override
-    public void on(final DomainEvent event) {
+    public void on(final BookRemoved event) {
         bookPricingRepository.deleteById(event.bookId());
     }
 }
