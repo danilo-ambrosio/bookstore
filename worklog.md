@@ -32,6 +32,7 @@ Created project basic structure and added maven configuration.
 
 ### Step 3: Domain Modeling and Unit Tests
 
+TODO: Describe what has been done in this step and others
 
 
 
