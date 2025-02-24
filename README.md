@@ -37,6 +37,7 @@ Just a short list of things I couldn't implement due to time constraints:
 - Monitoring (logging, meaningful exception messages) 
 - Better management of asynchronous components, eventual consistency (DomainEvents pub/sub)
 - Database optimization
+- HATEOAS
 
 ### How to run the app
 
