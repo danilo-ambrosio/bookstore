@@ -30,6 +30,10 @@ I created a [worklog](https://github.com/danilo-ambrosio/bookstore/blob/master/w
 
 All infrastructure dependencies are managed by Docker, so it's mandatory to install such tool and keep it up and running. Integration tests also rely on containers.
 
+### API
+
+Schemas and endpoints are documented in this [Open API file](https://editor.swagger.io/?raw=https://raw.githubusercontent.com/danilo-ambrosio/bookstore/refs/heads/master/assets/api_doc.json)
+
 ### Out of Scope
 
 Just a short list of things I couldn't implement due to time constraints:
@@ -42,18 +46,12 @@ Just a short list of things I couldn't implement due to time constraints:
 
 ### How to run the app
 
-The following command will compile, package and run the app on *localhost:8080*:
+The following command will compile, package and run the app on *localhost:8080*, while MongoDB will also be up on port 27017:
 
 ```
 docker compose up --build
 ```
 
-In addition, a container for MongoDB will also be up on port 27017.
+### Exploring Use Cases via Postman
 
-### API
 
-The API documentation is available [here](https://editor.swagger.io/?raw=https://raw.githubusercontent.com/danilo-ambrosio/bookstore/refs/heads/master/assets/api_doc.json)
-
-### Main User Flow
-
-TODO: Add some curl commands here to consume Rest API (User registration/authentication, Inventory, Pricing Policies, Loyalty Query...)
