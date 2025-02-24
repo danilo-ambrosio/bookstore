@@ -54,17 +54,15 @@ This app can be tested by using [this API collection](https://github.com/danilo-
 
 Having the collection in your workspace, the first step is to edit user's credentials (username and password) in the collection variables panel:
 
-<img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/postman/01-step-credentials.png" alt="drawing" />
+<img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/postman/01-step-credentials.png" alt="credentials" />
 
-There's no validation rule for username and password, any text is acceptable. So once it's set, a new user can be registered as follows:
+There's no validation rule for username and password, any text is acceptable. So once it's set, a new user can be registered and authenticated as follows:
 
-<img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/postman/02-step-registration.png" alt="drawing" />
+<img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/postman/02-step-registration.png" alt="registration" />
 
-Changing the payload is not needed as Postman will inject `username` and `password` variables. After signing up, it's required to authenticate as 
-some endpoints requires a logged user.
-
-<img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/postman/03-step-authorization.png" style="margin: -40px 0px 0px -120px;" alt="drawing" />
+<img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/postman/03-step-authorization.png" style="margin: -40px 0px 0px -120px;" alt="authentication" />
 
 > The current version of the app actually emulates an authentication process just by getting userId in the header 
 
-Once more, 
+Changing the payload is not needed as Postman will inject `username` and `password` variables. After signing up, it's required to authenticate as
+some endpoints requires a logged user.
