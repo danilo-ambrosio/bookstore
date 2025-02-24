@@ -2,6 +2,12 @@ package com.sporty.bookstore.domain.model.event;
 
 import com.sporty.bookstore.infrastructure.ThreadPool;
 
+/**
+ * The default implementation of {@link Notifier} asynchronously calls
+ * listeners interested in {@link DomainEvent}.
+ *
+ * @author Danilo Ambrosio
+ */
 public class DomainEventNotifier extends Notifier {
 
     private final ThreadPool threadPool;
