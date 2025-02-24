@@ -38,9 +38,13 @@ The following command will compile, package and run the app on *localhost:8080*,
 docker compose up --build
 ```
 
-### API
+If the app initialization succeeds, the following messages will be shown in the logs:
 
-
+```
+app-1      | 2025-02-24T17:11:36.345Z  INFO 1 --- [bookstore] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+app-1      | 2025-02-24T17:11:36.347Z  INFO 1 --- [bookstore] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1398 ms
+mongodb-1  | {"t":{"$date":"2025-02-24T17:11:36.602+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"172.18.0.3:48832","uuid":{"uuid":{"$uuid":"c5557c00-2df4-4dfb-abb6-8b97440d6989"}},"connectionId":1,"connectionCount":1}}
+```
 
 ## Exploring Book Store via Postman
 
