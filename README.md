@@ -28,12 +28,12 @@ I created a [worklog](https://github.com/danilo-ambrosio/bookstore/blob/master/w
 
 ### Requirements
 
-- All infrastructure dependencies are managed by Docker, so it's mandatory to install such tool and keep it up and running. Integration tests also rely on containers.
+All infrastructure dependencies are managed by Docker, so it's mandatory to install such tool and keep it up and running. Integration tests also rely on containers.
 
 ### Out of Scope
 
 Just a short list of things I couldn't implement due to time constraints:
-- Thorough and more secure authentication/authorization
+- Thorough and more secure authentication/authorization layer
 - Monitoring (logging, meaningful exception messages) 
 - Better management of asynchronous components, eventual consistency (DomainEvents pub/sub)
 - Database optimization
