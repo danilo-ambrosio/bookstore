@@ -55,3 +55,14 @@ This app can be tested by using [this API collection](https://github.com/danilo-
 Having the collection in your workspace, the first step is to edit user's credentials (username and password) in the collection variables panel:
 
 <img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/postman/01-step-credentials.png" alt="drawing" />
+
+There's no rule for username and password, so once it's set, a new user can be registered as follows:
+
+<img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/postman/02-step-registration.png" alt="drawing" />
+
+It's not needed to change the payload as Postman will inject `username` and `password` variables. After signing up, it's required to authenticate as 
+some endpoints requires a logged user.
+
+<img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/postman/03-step-authorization.png" alt="drawing" />
+
+> The current version of the app actually emulates an authentication process just by getting userId in the header 
