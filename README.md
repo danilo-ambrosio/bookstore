@@ -2,6 +2,7 @@
 
 # Online Book Store
 ![ci workflow](https://github.com/danilo-ambrosio/bookstore/actions/workflows/maven.yml/badge.svg)
+![test coverage](https://raw.githubusercontent.com/danilo-ambrosio/bookstore/refs/heads/master/.github/badges/jacoco.svg)
 
 Backend for an online book store app supporting features as inventory management, purchase/pricing and loyalty program.
 
