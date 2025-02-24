@@ -26,6 +26,14 @@ Here's a list of software techniques and principles adopted in this backend impl
 
 - All infrastructure dependencies are managed by Docker, so it's mandatory to install such tool and keep it up and running. Integration tests also rely on containers.
 
+### Out of Scope
+
+Just a short list of things I couldn't implement due to time constraints:
+- Thorough and more secure authentication/authorization
+- Monitoring (logging, meaningful exception messages) 
+- Better management of asynchronous components, eventual consistency (DomainEvents pub/sub)
+- Database optimization
+
 ### How to run the app
 
 The following command will compile, package and run the app on *localhost:8080*:
@@ -35,3 +43,4 @@ docker compose up --build
 ```
 
 In addition, a container for MongoDB will also be up on port 27017.
+
