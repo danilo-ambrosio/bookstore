@@ -35,7 +35,15 @@ jobs:
       with:
         generate-branches-badge: true
 
-    - name: Publish coverage report to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@v4
+    - name: Commit and push the badge (if it changed)
+      uses: EndBug/add-and-commit@v7
       with:
-        folder: target/site/jacoco/test/html/
+        default_author: github_actions
+        message: 'commit badge'
+        add: '*.svg'
+
+    - name: Upload JaCoCo coverage report
+      uses: actions/upload-artifact@v2
+      with:
+        name: jacoco-report
+        path: target/site/jacoco/
