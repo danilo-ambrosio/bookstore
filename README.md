@@ -16,7 +16,7 @@ Here's a list of software techniques and principles adopted in this backend impl
 
 ### Worklog
 
-[worklong](https://github.com/danilo-ambrosio/bookstore/blob/master/worklog.md) contains detailed information on my thought process during the project implementation. 
+I created a [worklog](https://github.com/danilo-ambrosio/bookstore/blob/master/worklog.md) containing detailed information on my thought process during the project implementation. 
 
 ### Framework and tools
 - [Java 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
@@ -47,4 +47,6 @@ docker compose up --build
 
 In addition, a container for MongoDB will also be up on port 27017.
 
-### CI/CD
+### API DOC
+
+![API DOC](https://editor.swagger.io/?raw=https://raw.githubusercontent.com/danilo-ambrosio/bookstore/refs/heads/master/assets/api_doc.json)
