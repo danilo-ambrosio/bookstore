@@ -11,7 +11,9 @@ Here's a list of software techniques and principles adopted in this backend impl
 - Asynchronous operations: non-blocking propagation of domain events, supporting eventual consistency and better definition of transaction boundaries for aggregates
 - TDD: mostly implemented using the test-first approach
 
-Further info on the [worklong](https://github.com/danilo-ambrosio/bookstore/blob/master/worklog.md).
+### Worklog
+
+[worklong](https://github.com/danilo-ambrosio/bookstore/blob/master/worklog.md) contains detailed information on my thought process during the project implementation. 
 
 ### Framework and tools
 - [Java 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
@@ -26,8 +28,10 @@ Further info on the [worklong](https://github.com/danilo-ambrosio/bookstore/blob
 
 ### How to run the app
 
-The following command will setup and run the app and a MongoDB instance:
+The following command will compile, package and run the app on *localhost:8080*:
 
 ```
 docker compose up --build
 ```
+
+In addition, a container for MongoDB will also be up on port 27017.
