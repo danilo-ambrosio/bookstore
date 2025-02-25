@@ -37,12 +37,17 @@ Before implementing any production code, created some test units for the first a
 allowed me to understand what would be the public methods, arguments, return types, etc...
 Next, once the test assertions were already in place, I implemented the code to make tests green. At this early implementation step, following what I drew in [this diagram](https://github.com/danilo-ambrosio/bookstore/blob/master/assets/grooming/initial-class-diagram.jpg), 
 I noticed something confusing in my first domain class: the purpose of [inventory.Book](https://github.com/danilo-ambrosio/bookstore/blob/master/src/main/java/com/sporty/bookstore/domain/model/inventory/Book.java) was initially to deal with 
-inventory operations, but I ended up adding logic related to financial processes. Result: too much responsibility for a class. Reminded me one of the golden rules of DDD: keep your aggregates smaller as much as possible. From experience, I know
+inventory operations, but I ended up adding logic related to financial processes. Result: too much responsibility for a class. Such mistake reminded me of one of the golden rules of DDD: keep your aggregates smaller as much as possible. From experience, I know
 that's also good for scalability and responsiveness.
 
-### Step 4: Rethinking domain model and Integration Tests
+### Step 4: Rethinking domain model, Value Objects and Integration Tests
 
+Still in the inventory domain, I intentionally made all Book attributes as Value Objects. Among many benefits, this pattern makes code readable and methods easier to use.
 
+In this step, I also implemented some integration test cases. It required some greater effort due to unsuccessful embedded MongoDB setup, but, in the end, it really paid off (later, I'll tell why). As I adopted a kind of broader scope for integration tests 
+by not mocking DB, [TestContainers](https://testcontainers.com/) met what I expected in terms of having a test environment closer to the reality.
+
+### Step 5: Pricing feature
 
 
 
