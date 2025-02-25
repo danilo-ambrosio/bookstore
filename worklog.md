@@ -32,7 +32,16 @@ Created project basic structure and added maven configuration.
 
 ### Step 3: Domain Modeling and Unit Tests
 
-TODO: Describe what has been done in this step and others
+Having in mind the rule of inward dependency sense (Clean Architecture) and the primacy of Domain concerns (DDD), I decided to start this project by working on the domain model, more specifically in, what I called, the inventory domain. 
+Before implementing any production code, created some test units for the first aggregate [inventory.Book](https://github.com/danilo-ambrosio/bookstore/blob/master/src/main/java/com/sporty/bookstore/domain/model/inventory/Book.java) which 
+allowed me to understand what would be the public methods, arguments, return types, etc...
+Next, once the test assertions were already in place, I implemented the code to make tests green. At this early implementation step, following what I drew in [this diagram](https://github.com/danilo-ambrosio/bookstore/blob/master/assets/grooming/initial-class-diagram.jpg), 
+I noticed something confusing in my first domain class: the purpose of [inventory.Book](https://github.com/danilo-ambrosio/bookstore/blob/master/src/main/java/com/sporty/bookstore/domain/model/inventory/Book.java) was initially to deal with 
+inventory operations, but I ended up adding logic related to financial processes. Result: too much responsibility for a class. Reminded me one of the golden rules of DDD: keep your aggregates smaller as much as possible. From experience, I know
+that's also good for scalability and responsiveness.
+
+### Step 4: Rethinking domain model and Integration Tests
+
 
 
 
