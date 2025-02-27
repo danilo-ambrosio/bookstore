@@ -87,6 +87,6 @@ and rounding in a Value Object ([Price](https://github.com/danilo-ambrosio/books
 
 In regard to discount policies/book types (NEW_RELEASE, OLD_EDITION, REGULAR_EDITION), I originally thought a State 
 Pattern implementation applied to [Book](https://github.com/danilo-ambrosio/bookstore/blob/4b4f2e35a2a6a5804278ed546de932c94f164e22/src/main/java/com/sporty/bookstore/domain/model/pricing/Book.java) combined with [JPA/DiscriminatorType](https://docs.jboss.org/hibernate/jpa/2.1/api/javax/persistence/DiscriminatorColumn.html) 
-to automatically fetch the proper subclass from DB. Early, I noticed it would be better an approach more like 
-"composition over inheritance", so I took [Strategy](https://refactoring.guru/design-patterns/strategy) pattern instead.
+to automatically fetch the proper subclass from DB. Soon I noticed an approach more like 
+"composition over inheritance" would fit better, so I took [Strategy](https://refactoring.guru/design-patterns/strategy) pattern instead.
 
