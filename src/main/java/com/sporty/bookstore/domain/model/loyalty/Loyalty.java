@@ -28,18 +28,6 @@ public class Loyalty {
         this.points = points;
     }
 
-    public String beneficiaryId() {
-        return beneficiary.id();
-    }
-
-    public int points() {
-        return points.total;
-    }
-
-    public boolean cover(final int bookQuantity) {
-        return Points.requiredFor(bookQuantity).total <= points.total;
-    }
-
     public void useFor(final int bookQuantity) {
         if (!cover(bookQuantity)) {
             throw new InsufficientLoyaltyPointsException();
@@ -49,6 +37,18 @@ public class Loyalty {
 
     public void accumulate(int bookQuantity) {
         points = this.points.accumulateFrom(bookQuantity);
+    }
+
+    public boolean cover(final int bookQuantity) {
+        return Points.requiredFor(bookQuantity).total <= points.total;
+    }
+
+    public String beneficiaryId() {
+        return beneficiary.id();
+    }
+
+    public int points() {
+        return points.total;
     }
 
 }
