@@ -100,7 +100,7 @@ In this step, I also introduced [Domain Events](https://martinfowler.com/eaaDev/
 of classes](https://github.com/danilo-ambrosio/bookstore/tree/master/src/main/java/com/sporty/bookstore/domain/model/event) to support this tactical DDD pattern, having in mind 
 that, usually in real scenarios, Loyalty Points may be eventually consistent (i.e. asynchronously updated).
 
-For a better understanding of how everything is wired, here's a sequence diagram of the purchase book operation and its async/non-blocking side effect on
+For a better understanding of how everything is wired, here's a sequence diagram showing the purchase book operation and its async/non-blocking side effect on
 Loyalty domain model:
 
 ```mermaid
