@@ -1,8 +1,5 @@
 package com.sporty.bookstore.domain.model.user;
 
-import org.springframework.data.annotation.PersistenceConstructor;
-
-import java.util.Objects;
 import java.util.UUID;
 
 /**

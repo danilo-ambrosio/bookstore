@@ -1,10 +1,6 @@
 package com.sporty.bookstore.infrastructure.repository;
 
-import com.sporty.bookstore.domain.model.pricing.Price;
 import com.sporty.bookstore.domain.model.purchase.PaymentDetail;
-import com.sporty.bookstore.domain.model.purchase.BookId;
-import com.sporty.bookstore.domain.model.purchase.PaymentMethod;
-import com.sporty.bookstore.domain.model.purchase.Quantity;
 
 public class PaymentData {
 

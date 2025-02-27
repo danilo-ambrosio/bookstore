@@ -32,7 +32,7 @@ value objects, tests, controllers, so on).
 By knowing that, I can also estimate the effort for each use case/user story. These bullets become fine-grained tasks
 that provides a more accurate personal progress indicator.
 Self time management gives peace of mind about not being delayed and is easier to do when the time box for each amount
-of work to be completed is short. The smaller sub tasks are,
+of work to be completed is short. The smaller sub-tasks are,
 the better to have an accurate progress indicator.
 
 ### 2: Initial setup

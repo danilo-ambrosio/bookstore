@@ -1,6 +1,5 @@
 package com.sporty.bookstore.domain.model.inventory;
 
-import com.sporty.bookstore.domain.model.event.DomainEvent;
 import com.sporty.bookstore.domain.model.event.Listener;
 import com.sporty.bookstore.domain.model.event.Notifier;
 import com.sporty.bookstore.domain.model.purchase.PurchaseProcessed;
