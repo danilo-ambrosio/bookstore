@@ -1,6 +1,5 @@
 package com.sporty.bookstore.domain.model.loyalty;
 
-import com.sporty.bookstore.domain.model.event.DomainEvent;
 import com.sporty.bookstore.domain.model.event.DomainEventType;
 import com.sporty.bookstore.domain.model.event.Listener;
 import com.sporty.bookstore.domain.model.event.Notifier;
