@@ -14,7 +14,7 @@ Those concepts have been a solid foundation in my career to build successful sol
 teams and meeting modern
 software requirements: scalability, responsiveness, maintainability, etc.
 
-### Step 1: Requirements Analysis
+### 1: Requirements Analysis
 
 First, I carefully read the functional requirements, spending more time with those would require more business logic (
 e.g. price/discount calculation).
@@ -90,3 +90,77 @@ Pattern implementation applied to [Book](https://github.com/danilo-ambrosio/book
 to automatically fetch the proper subclass from DB. Soon I noticed an approach more like 
 "composition over inheritance" would fit better, so I took [Strategy](https://refactoring.guru/design-patterns/strategy) pattern instead.
 
+### 7: Loyalty and Domain Events
+
+I intentionally left the Loyalty Program implementation for last because it depends on the other features. Thinking 
+of Loyalty invariants, I decided to create [Points](https://github.com/danilo-ambrosio/bookstore/blob/4b4f2e35a2a6a5804278ed546de932c94f164e22/src/main/java/com/sporty/bookstore/domain/model/loyalty/Points.java)
+to centralize the proportion of consumed points versus purchased books. 
+In this step, I also introduced [Domain Events](https://martinfowler.com/eaaDev/DomainEvent.html) along with a 
+[collection 
+of classes](https://github.com/danilo-ambrosio/bookstore/tree/master/src/main/java/com/sporty/bookstore/domain/model/event) to support this tactical DDD pattern, having in mind 
+that, usually in real scenarios, Loyalty Points may be eventually consistent (i.e. asynchronously updated).
+
+For a better understanding of how everything is wired, here's a sequence diagram of the purchase book operation and its async/non-blocking side effect on
+Loyalty domain model:
+
+```mermaid
+sequenceDiagram
+    actor Client
+    participant PurchaseResource
+    participant PurchaseUseCase
+    participant BookAvailability
+    participant LoyaltyCoverage
+    participant PriceReviewer
+    participant Purchase
+    participant PurchaseRepository
+    participant Notifier
+    participant LoyaltyPointsUpdateListener
+    participant LoyaltyPointsCalculator
+    participant CustomerLoyaltyRepository
+
+    Client->>PurchaseResource: POST /purchases<br/>(PurchaseData)
+    
+    Note over PurchaseResource: Convert DTOs to:<br/>- Customer<br/>- List<PaymentDetail>
+    
+    PurchaseResource->>PurchaseUseCase: process(customer, paymentDetails)
+    
+    %% Main purchase flow (collapsed for clarity)
+    PurchaseUseCase->>BookAvailability: check(bookId, stockQuantity)
+    BookAvailability-->>PurchaseUseCase: void/throws if unavailable
+    PurchaseUseCase->>LoyaltyCoverage: check(customer, paymentDetails)
+    LoyaltyCoverage-->>PurchaseUseCase: void/throws if invalid
+    PurchaseUseCase->>PriceReviewer: review(paymentDetails)
+    PriceReviewer-->>PurchaseUseCase: Payments
+    PurchaseUseCase->>Purchase: process(customer, payments)
+    Purchase-->>PurchaseUseCase: purchase
+    PurchaseUseCase->>PurchaseRepository: save(PurchaseData.from(purchase))
+    PurchaseRepository-->>PurchaseUseCase: saved entity
+    
+    %% Notify and handle loyalty points
+    PurchaseUseCase->>Notifier: notify(PurchaseProcessed)
+    Notifier->>LoyaltyPointsUpdateListener: onPurchaseProcessed(event)
+    
+    %% Loyalty points calculation and update
+    LoyaltyPointsUpdateListener->>LoyaltyPointsCalculator: calculate(purchase)
+    Note over LoyaltyPointsCalculator: Calculate points based on<br/>purchase amount
+    LoyaltyPointsCalculator-->>LoyaltyPointsUpdateListener: points
+    
+    LoyaltyPointsUpdateListener->>CustomerLoyaltyRepository: findByCustomerId(customerId)
+    alt Customer Loyalty Exists
+        CustomerLoyaltyRepository-->>LoyaltyPointsUpdateListener: Optional<CustomerLoyalty>
+        Note over LoyaltyPointsUpdateListener: Update existing points
+    else Customer Loyalty Not Found
+        CustomerLoyaltyRepository-->>LoyaltyPointsUpdateListener: Empty Optional
+        Note over LoyaltyPointsUpdateListener: Create new loyalty record
+    end
+    
+    LoyaltyPointsUpdateListener->>CustomerLoyaltyRepository: save(customerLoyalty)
+    CustomerLoyaltyRepository-->>LoyaltyPointsUpdateListener: saved entity
+    
+    LoyaltyPointsUpdateListener->>Notifier: notify(LoyaltyPointsUpdated)
+    Note over Notifier: Publish points update event
+    
+    PurchaseUseCase-->>PurchaseResource: purchase
+    PurchaseResource-->>Client: HTTP 201 (CREATED)<br/>PurchaseData
+
+```
