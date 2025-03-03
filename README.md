@@ -108,7 +108,7 @@ Purchased books mean loyalty points. If the previous step succeeded, let's have 
 
 <img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/postman/10-step-loyalty.png" alt="book-discount" />
 
-### Out of Scope
+## Out of Scope
 
 Just a short list of things I couldn't implement due to time constraints:
 - Input validation
