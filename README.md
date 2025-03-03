@@ -107,3 +107,13 @@ This field will be retrieved on the backend as Postman automatically saved its v
 Purchased books mean loyalty points. If the previous step succeeded, let's have a look at how many loyalty points were added:
 
 <img src="https://github.com/danilo-ambrosio/bookstore/blob/master/assets/postman/10-step-loyalty.png" alt="book-discount" />
+
+### Out of Scope
+
+Just a short list of things I couldn't implement due to time constraints:
+- Input validation
+- Secure authentication/authorization layer (Spring Security supports different standards)
+- Monitoring (logging, meaningful exception messages)
+- Better management of asynchronous operations, eventual consistency (e.g. DomainEvents pub/sub)
+- Database optimization
+- HATEOAS
